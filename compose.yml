@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:latest
-    restart: urless-stopped
+    restart: unless-stopped
     ports:
       - 5432:5432
     environment:
@@ -10,7 +10,6 @@ services:
       POSTGRES_PASSWORD: ${JOURNEY_DATABASE_PASSWORD}
     volumes:
       - db:/var/lib/postgresql/data
-
 volumes:
   db:
     driver: local #pode ser um S3 bucket por exemplo para manter a volumetria
