@@ -1,5 +1,5 @@
 version: "2"
-sql:
+sql: 
   - engine: "postgresql"
     queries: "./queries"
     schema: "./migrations"
@@ -7,9 +7,9 @@ sql:
       go:
         out: "."
         package: "pgstore"
-        sql_package: "pgx/v5"
-        overrides:
-        - db_type: "uuid"
-          go_type:
-            import: "github.com/google/uuid"
-            type: "UUID"
+        sql_package: "pgx/v5"           #dependencia
+        overrides:                      #comando opcional que sobrescreve um tipo por outro tipo
+          - db_type: "uuid"
+            go_type:
+              import: "github.com/google/uuid"
+              type: "UUID"              #pgtype não utiliza um UUID que precisamos, por isso fazemos o override
