@@ -37,7 +37,6 @@ require (
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/perimeterx/marshmallow v1.1.5 // indirect
 	github.com/phenpessoa/gutils v0.0.0-20240130030144-d391b9329afd
-	github.com/rocketseat-education/nlw-journey-go v0.0.0-20240709154252-fff52a5cddc4
 	go.uber.org/zap v1.27.0
 	golang.org/x/crypto v0.25.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
