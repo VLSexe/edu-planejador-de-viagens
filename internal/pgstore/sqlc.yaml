@@ -8,6 +8,8 @@ sql:
         out: "."
         package: "pgstore"
         sql_package: "pgx/v5"           #dependencia
+        emit_json_tags: true
+        emit_db_tags: true
         overrides:                      #comando opcional que sobrescreve um tipo por outro tipo
           - db_type: "uuid"
             go_type:
