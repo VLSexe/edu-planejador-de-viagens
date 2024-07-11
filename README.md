@@ -1,16 +1,15 @@
-# edu-planejador-de-viagens
-Projeto Planejador de Viagens NLW-Journey2024🟣 - Rockeseat.
+# Projeto Planejador de Viagens NLW-Journey2024🟣 - Rockeseat.
 📌Doc da API: https://nlw-journey.apidocumentation.com/reference#tag/trips
 
 📌Sobre o projeto:
-🔹 Projeto API Back-end que visa ajudar usuários a fazer agendamento de viagens.
-🔹 Usuário pode criar, planejar viagens, convidar participantes etc.
+- 🔹 Projeto API Back-end que visa ajudar usuários a fazer agendamento de viagens.
+- 🔹 Usuário pode criar, planejar viagens, convidar participantes etc.
 
 📌Tecnologias utilizadas: 
-🔹 Go
-🔹 banco de dados
-🔹 docker
-🔹 docker compose
+- 🔹 Go
+- 🔹 banco de dados
+- 🔹 docker
+- 🔹 docker compose
 
 # Autor: Victor Lopes dos Santos
 
