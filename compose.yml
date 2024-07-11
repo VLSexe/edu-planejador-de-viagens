@@ -1,28 +1,26 @@
 services:
-  app:
-    build: .
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    volumes:
+      - mailpit:/data
     ports:
-      - 8080:8080
+      - 1025:1025
+      - 8025:8025
     environment:
-      JOURNEY_DATABASE_USER: ${JOURNEY_DATABASE_USER}
-      JOURNEY_DATABASE_NAME: ${JOURNEY_DATABASE_NAME}
-      JOURNEY_DATABASE_PASSWORD: ${JOURNEY_DATABASE_PASSWORD}
-      JOURNEY_DATABASE_PORT: ${JOURNEY_DATABASE_PORT:-5432}
-      JOURNEY_DATABASE_HOST_DOCKER: ${JOURNEY_DATABASE_HOST_DOCKER:-db}
-    depends_on:
-      - db
+      MP_DATABASE: /data/mailpit.db
 
   db:
-    image: postgres:latest
+    image: "postgres:latest"
     restart: unless-stopped
     ports:
-      - 5431:${JOURNEY_DATABASE_PORT}
-    volumes:
-      - db:/var/lib/postgresql/data
+      - 5432:5432
     environment:
       POSTGRES_USER: ${JOURNEY_DATABASE_USER}
-      POSTGRES_DB: ${JOURNEY_DATABASE_NAME}
+      POSTGRES_DB: ${JOURNEY_DATABASE_DB}
       POSTGRES_PASSWORD: ${JOURNEY_DATABASE_PASSWORD}
+    volumes:
+      - db:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -37,8 +35,24 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
 
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      JOURNEY_DATABASE_NAME: ${JOURNEY_DATABASE_DB}
+      JOURNEY_DATABASE_USER: ${JOURNEY_DATABASE_USER}
+      JOURNEY_DATABASE_PASSWORD: ${JOURNEY_DATABASE_PASSWORD}
+      JOURNEY_DATABASE_PORT: ${JOURNEY_DATABASE_PORT:-5432}
+      JOURNEY_DATABASE_HOST: ${JOURNEY_DATABASE_HOST_DOCKER:-db}
+    depends_on:
+      - db
+      - pgadmin
+
 volumes:
   db:
     driver: local
   pgadmin:
+    driver: local
+  mailpit:
     driver: local
